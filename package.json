@@ -1,0 +1,36 @@
+{
+  "name": "webpack-project-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --fix --max-warnings=0",
+    "format": "prettier . --write",
+    "watch": "webpack --watch",
+    "build": "webpack",
+    "dev": "webpack serve"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "Scott Wright",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "2.8.8",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
