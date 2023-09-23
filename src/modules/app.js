@@ -1,8 +1,6 @@
-// Write the functions that hit the API. You’re going to want functions that can take a location and return the weather data for that location. For now, just console.log() the information.
-
-async function getWeatherData() {
+async function fetchWeatherData(locationSearch) {
     try {
-        const response = await fetch("https://api.weatherapi.com/v1/current.json?key=dd41ad9a0fc4482f91085416231509&q=nyc&aqi=no", { mode: 'cors' });
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=dd41ad9a0fc4482f91085416231509&q=${locationSearch}&aqi=no`, { mode: 'cors' });
         
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -20,10 +18,17 @@ async function getWeatherData() {
     }
 }
 
-getWeatherData()
+const searchForm = document.querySelector('#location-search');
+
+searchForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const locationSearch = document.querySelector('#search-input').value;
+    fetchWeatherData(locationSearch.trim())
     .then(data => {
         console.log(`The current temperature in ${data.location.name} is ${data.current.temp_c} degrees and the outlook is ${data.current.condition.text}`);
     })
     .catch(error => {
         console.error("Error:", error);
     });
+})
