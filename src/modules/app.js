@@ -1,15 +1,23 @@
+async function fetchAPIData(url) {
+    return fetch(url, { mode: 'cors' });
+}
+
+async function handleAPIResponse(response) {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const fetchedData = await response.json();
+    if (!fetchedData) {
+        throw new Error("No Data was fetched from your API call");
+    }
+    return fetchedData;
+}
+
 async function fetchWeatherData(locationQuery) {
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=dd41ad9a0fc4482f91085416231509&q=${locationQuery}&aqi=no`, { mode: 'cors' });
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const fetchedData = await response.json();
-        console.log('fetchedData', fetchedData);
-        if (!fetchedData) {
-            throw new Error("No Data was fetched from your API call");
-        }
+        const url = `https://api.weatherapi.com/v1/current.json?key=dd41ad9a0fc4482f91085416231509&q=${locationQuery}&aqi=no`;
+        const response = await fetchAPIData(url);
+        const fetchedData = await handleAPIResponse(response);
         return fetchedData;
     } catch (error) {
         console.log("There was an error fetching the data:", error);
