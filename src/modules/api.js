@@ -4,6 +4,9 @@ async function fetchAPIData(url) {
 
 async function handleAPIResponse(response) {
     if (!response.ok) {
+        if (response.status === 400) {
+            throw new Error("Location not found, please try again.");
+        }
         throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const fetchedData = await response.json();
@@ -14,13 +17,8 @@ async function handleAPIResponse(response) {
 }
 
 export async function fetchWeatherData(locationQuery) {
-    try {
         const url = `https://api.weatherapi.com/v1/forecast.json?key=dd41ad9a0fc4482f91085416231509&q=${locationQuery}&days=3&aqi=no&alerts=no`;
         const response = await fetchAPIData(url);
         const fetchedData = await handleAPIResponse(response);
         return fetchedData;
-    } catch (error) {
-        console.log("There was an error fetching the data:", error);
-        throw error;
-    }
-}
+    } 
