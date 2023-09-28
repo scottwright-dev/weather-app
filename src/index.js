@@ -1,2 +1,2 @@
 import './styles/style.css';
-import './modules/dom';
+import './modules/controller';
