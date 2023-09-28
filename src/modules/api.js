@@ -13,6 +13,7 @@ async function handleAPIResponse(response) {
     if (!fetchedData) {
         throw new Error("No Data was fetched from your API call");
     }
+    console.log('does it get fecthed here too', fetchedData);
     return fetchedData;
 }
 
@@ -20,5 +21,6 @@ export async function fetchWeatherData(locationQuery) {
         const url = `https://api.weatherapi.com/v1/forecast.json?key=dd41ad9a0fc4482f91085416231509&q=${locationQuery}&days=3&aqi=no&alerts=no`;
         const response = await fetchAPIData(url);
         const fetchedData = await handleAPIResponse(response);
+        console.log('fetchedDataObj', fetchedData);
         return fetchedData;
     } 
