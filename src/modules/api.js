@@ -9,18 +9,16 @@ async function handleAPIResponse(response) {
         }
         throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    const fetchedData = await response.json();
-    if (!fetchedData) {
+    const apiResponse = await response.json();
+    if (!apiResponse) {
         throw new Error("No Data was fetched from your API call");
     }
-    console.log('does it get fecthed here too', fetchedData);
-    return fetchedData;
+    return apiResponse;
 }
 
 export async function fetchWeatherData(locationQuery) {
-        const url = `https://api.weatherapi.com/v1/forecast.json?key=dd41ad9a0fc4482f91085416231509&q=${locationQuery}&days=3&aqi=no&alerts=no`;
-        const response = await fetchAPIData(url);
-        const fetchedData = await handleAPIResponse(response);
-        console.log('fetchedDataObj', fetchedData);
-        return fetchedData;
-    } 
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=dd41ad9a0fc4482f91085416231509&q=${locationQuery}&days=3&aqi=no&alerts=no`;
+    const response = await fetchAPIData(url);
+    const fetchedData = await handleAPIResponse(response);
+    return fetchedData;
+}
