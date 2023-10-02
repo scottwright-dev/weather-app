@@ -17,5 +17,8 @@ function handleFormSubmit(event) {
     processWeatherData(locationQuery);
 }
 
-const searchForm = getSearchForm();
-searchForm.addEventListener('submit', handleFormSubmit);
+export function initialise() {
+    const searchForm = getSearchForm();
+    searchForm.addEventListener('submit', handleFormSubmit);
+}
+
