@@ -1,11 +1,3 @@
-export function getSearchForm() {
-    return document.querySelector('#location-query');
-}
-
-export function getLocationQuery() {
-    return document.querySelector('#location-query-input').value.trim();
-}
-
 export function updateUI(data) {
     console.log(`The current temperature in ${data.locationName} is ${data.currentTemp} degrees, and the outlook is ${data.currentCondition}. 
 

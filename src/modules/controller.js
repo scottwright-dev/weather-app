@@ -1,5 +1,5 @@
 import { fetchWeatherData } from "./api";
-import { getSearchForm, getLocationQuery, updateUI } from "./ui";
+import { updateUI } from "./ui";
 
 function processWeatherData(locationQuery) {
     fetchWeatherData(locationQuery)
@@ -13,12 +13,11 @@ function processWeatherData(locationQuery) {
 
 function handleFormSubmit(event) {
     event.preventDefault();
-    const locationQuery = getLocationQuery();
+    const locationQuery = document.querySelector('#location-query-input').value.trim();
     processWeatherData(locationQuery);
 }
 
 export function initialise() {
-    const searchForm = getSearchForm();
+    const searchForm = document.querySelector('#location-query');
     searchForm.addEventListener('submit', handleFormSubmit);
 }
-
