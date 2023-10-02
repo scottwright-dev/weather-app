@@ -20,5 +20,14 @@ export async function fetchWeatherData(locationQuery) {
     const url = `https://api.weatherapi.com/v1/forecast.json?key=dd41ad9a0fc4482f91085416231509&q=${locationQuery}&days=3&aqi=no&alerts=no`;
     const response = await fetchAPIData(url);
     const fetchedData = await handleAPIResponse(response);
-    return fetchedData;
+
+    return {
+        locationName: fetchedData.location.name,
+        currentTemp: fetchedData.current.temp_c,
+        currentCondition: fetchedData.current.condition.text,
+        forecast: fetchedData.forecast.forecastday.map(day => ({
+            date: day.date,
+            condition: day.day.condition.text,
+        })),
+    };
 }

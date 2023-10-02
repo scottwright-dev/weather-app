@@ -1,23 +1,21 @@
 import { fetchWeatherData } from "./api";
+import { getSearchForm, getLocationQuery, updateUI } from "./ui";
 
-const searchForm = document.querySelector('#location-query');
+function fetchAndProcessWeatherData(locationQuery) {
+    fetchWeatherData(locationQuery)
+        .then(data => {
+            updateUI(data);  
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
 
-searchForm.addEventListener('submit', event => {
+function handleFormSubmit(event) {
     event.preventDefault();
+    const locationQuery = getLocationQuery();
+    fetchAndProcessWeatherData(locationQuery);
+}
 
-    const locationQuery = document.querySelector('#location-query-input').value;
-    fetchWeatherData(locationQuery.trim())
-    .then(data => {
-        console.log(`The current temperature in ${data.location.name} is ${data.current.temp_c} degrees, and the outlook is ${data.current.condition.text}. 
-        
-        The forecast for the next 3 days is:
-         
-        ${data.forecast.forecastday[0].date} will be ${data.forecast.forecastday[0].day.condition.text} 
-        ${data.forecast.forecastday[1].date} will be ${data.forecast.forecastday[1].day.condition.text} 
-        ${data.forecast.forecastday[2].date} will be ${data.forecast.forecastday[2].day.condition.text} 
-        `);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-})
+const searchForm = getSearchForm();
+searchForm.addEventListener('submit', handleFormSubmit);
