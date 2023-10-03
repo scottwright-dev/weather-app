@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 async function fetchAPIData(url) {
     return fetch(url, { mode: 'cors' });
 }
@@ -22,28 +24,42 @@ export async function fetchWeatherData(locationQuery) {
     const fetchedData = await handleAPIResponse(response);
 
     return {
-        locationName: fetchedData.location.name,
-        locationRegion: fetchedData.location.region,
-        locationCountry: fetchedData.location.country,
-        locationLocalTime: fetchedData.location.localtime,
-
-        currentCondition: fetchedData.current.condition.text,
-        currentConditionIcon: fetchedData.current.condition.icon,
-        currentTempC: fetchedData.current.temp_c,
-        feelsLikeC: fetchedData.current.feelslike_c,
-        currentTempF: fetchedData.current.temp_f,
-        feelsLikeF: fetchedData.current.feelslike_f,
-        humidity: fetchedData.current.humidity,
-        windKph: fetchedData.current.wind_kph,
-        windMph: fetchedData.current.wind_mph,
-
-        forecast: fetchedData.forecast.forecastday.map(day => ({
-            date: day.date,
-            condition: day.day.condition.text,
-            icon: day.day.condition.icon,
-            avgTempC: day.day.avgtemp_c,
-            avgTempF: day.day.avgtemp_f,
-            rainChance: day.day.daily_chance_of_rain,
-        })),
+        ...extractLocationData(fetchedData),
+        ...extractCurrentWeatherData(fetchedData),
+        forecast: extractForecastData(fetchedData)
     };
+}
+
+export function extractLocationData(data) {
+    return {
+        locationName: data.location.name,
+        locationRegion: data.location.region,
+        locationCountry: data.location.country,
+        locationLocalTime: data.location.localtime
+    };
+}
+
+export function extractCurrentWeatherData(data) {
+    return {
+        currentCondition: data.current.condition.text,
+        currentConditionIcon: data.current.condition.icon,
+        currentTempC: data.current.temp_c,
+        feelsLikeC: data.current.feelslike_c,
+        currentTempF: data.current.temp_f,
+        feelsLikeF: data.current.feelslike_f,
+        humidity: data.current.humidity,
+        windKph: data.current.wind_kph,
+        windMph: data.current.wind_mph
+    };
+}
+
+export function extractForecastData(data) {
+    return data.forecast.forecastday.map(day => ({
+        date: day.date,
+        condition: day.day.condition.text,
+        icon: day.day.condition.icon,
+        avgTempC: day.day.avgtemp_c,
+        avgTempF: day.day.avgtemp_f,
+        rainChance: day.day.daily_chance_of_rain
+    }));
 }
