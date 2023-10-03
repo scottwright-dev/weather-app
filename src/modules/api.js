@@ -30,7 +30,7 @@ export async function fetchWeatherData(locationQuery) {
     };
 }
 
-export function extractLocationData(data) {
+function extractLocationData(data) {
     return {
         locationName: data.location.name,
         locationRegion: data.location.region,
@@ -39,7 +39,7 @@ export function extractLocationData(data) {
     };
 }
 
-export function extractCurrentWeatherData(data) {
+function extractCurrentWeatherData(data) {
     return {
         currentCondition: data.current.condition.text,
         currentConditionIcon: data.current.condition.icon,
@@ -53,7 +53,7 @@ export function extractCurrentWeatherData(data) {
     };
 }
 
-export function extractForecastData(data) {
+function extractForecastData(data) {
     return data.forecast.forecastday.map(day => ({
         date: day.date,
         condition: day.day.condition.text,
