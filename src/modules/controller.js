@@ -3,8 +3,8 @@ import { updateUI } from "./ui";
 
 function processWeatherData(locationQuery) {
     fetchWeatherData(locationQuery)
-        .then(data => {
-            updateUI(data);  
+        .then(weatherData => {
+            updateUI(weatherData);  
         })
         .catch(error => {
             console.error(error);
