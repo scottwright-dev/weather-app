@@ -1,5 +1,7 @@
 /* eslint-disable no-use-before-define */
 
+import { formatDate, formatDateAndTime } from "./utility";
+
 async function fetchAPIData(url) {
     return fetch(url, { mode: 'cors' });
 }
@@ -35,7 +37,7 @@ function extractLocationData(data) {
         locationName: data.location.name,
         locationRegion: data.location.region,
         locationCountry: data.location.country,
-        locationLocalTime: data.location.localtime
+        locationLocalTime: formatDateAndTime(data.location.localtime)
     };
 }
 
@@ -55,7 +57,7 @@ function extractCurrentWeatherData(data) {
 
 function extractForecastData(data) {
     return data.forecast.forecastday.map(day => ({
-        date: day.date,
+        date: formatDate(day.date),
         condition: day.day.condition.text,
         icon: day.day.condition.icon,
         avgTempC: day.day.avgtemp_c,
