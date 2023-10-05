@@ -1,10 +1,10 @@
 import { fetchWeatherData } from "./api";
-import { updateUI } from "./ui";
+import { updateCurrentWeatherUI } from "./ui";
 
 function processWeatherData(locationQuery) {
     fetchWeatherData(locationQuery)
         .then(weatherData => {
-            updateUI(weatherData);  
+            updateCurrentWeatherUI(weatherData);  
         })
         .catch(error => {
             console.error(error);

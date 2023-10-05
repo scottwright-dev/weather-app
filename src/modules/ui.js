@@ -1,17 +1,32 @@
-export function updateUI(weatherData) {
-    const displayData = document.querySelector('.display-data');
+// CURRENT WEATHER DATA
 
-    const content = `
-        <p>Current local time: ${weatherData.locationLocalTime}.
-        
-        The current temperature in ${weatherData.locationName} is ${weatherData.currentTempC} degrees, and the outlook is ${weatherData.currentCondition}.</p>
-        <p>The forecast for the next 3 days is:</p>
-        <ul>
-            <li>${weatherData.forecast[0].date} will be ${weatherData.forecast[0].condition}</li>
-            <li>${weatherData.forecast[1].date} will be ${weatherData.forecast[1].condition}</li>
-            <li>${weatherData.forecast[2].date} will be ${weatherData.forecast[2].condition}</li>
-        </ul>
-    `;
+function updateLocationName(location) {
+    const locationNameElement = document.querySelector('.location-name');
 
-    displayData.innerHTML = content;
+    locationNameElement.textContent = location;
+}
+
+function updateTemperatureValue(temperature) {
+    const tempValueElement = document.querySelector('.temp-value');
+
+    tempValueElement.textContent = temperature;
+}
+
+function updateFeelsLikeTempValue(feelsLikeTemperature) {
+    const feelsLikeElement = document.querySelector('.feels-like-value');
+
+    feelsLikeElement.textContent = feelsLikeTemperature;
+}
+
+function updateCurrentConditionText(currentCondition) {
+    const currentTextElement = document.querySelector('.current-condition-text');
+
+    currentTextElement.textContent = currentCondition;
+}
+
+export function updateCurrentWeatherUI(weatherData) {
+    updateLocationName(weatherData.locationName);
+    updateTemperatureValue(weatherData.currentTempC);
+    updateFeelsLikeTempValue(weatherData.feelsLikeC);
+    updateCurrentConditionText(weatherData.currentCondition);
 }
