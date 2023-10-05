@@ -18,6 +18,13 @@ function updateFeelsLikeTempValue(feelsLikeTemperature) {
     feelsLikeElement.textContent = feelsLikeTemperature;
 }
 
+function updateCurrentWeatherIcon(currentConditionIcon) {
+    const currentWeatherIconElement = document.querySelector('.current-condition-icon img');
+    const currentWeatherIcon = currentConditionIcon;
+
+    currentWeatherIconElement.src = currentWeatherIcon;
+}
+
 function updateCurrentConditionText(currentCondition) {
     const currentTextElement = document.querySelector('.current-condition-text');
 
@@ -28,5 +35,6 @@ export function updateCurrentWeatherUI(weatherData) {
     updateLocationName(weatherData.locationName);
     updateTemperatureValue(weatherData.currentTempC);
     updateFeelsLikeTempValue(weatherData.feelsLikeC);
+    updateCurrentWeatherIcon(weatherData.currentConditionIcon);
     updateCurrentConditionText(weatherData.currentCondition);
 }
