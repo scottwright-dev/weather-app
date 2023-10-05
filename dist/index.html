@@ -9,11 +9,11 @@
 <body>
     <main class="main">
         <section class="current-weather">
-            <h1 class="location-name"></h1>
             <form id="location-query">
                 <input type="text" id="location-query-input" placeholder="Search location" required>
                 <button type="submit" class="search-btn" aria-label="location search button">Search</button>
             </form>
+            <h1 class="location-name"></h1>
             <div class="current-weather-data">
                 <div class="temperature">
                     <span class="temp-value">--</span><span class="temp-unit">°C</span>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="current-condition-icon">
                     <svg width="50" height="50" aria-label="Current condition icon"></svg>
-                    <p class="current-condition-text">--</p>
+                    <p class="current-condition-text"></p>
                 </div>
             </div>
         </section>
