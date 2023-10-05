@@ -13,8 +13,12 @@ function processWeatherData(locationQuery) {
 
 function handleFormSubmit(event) {
     event.preventDefault();
-    const locationQuery = document.querySelector('#location-query-input').value.trim();
+    const locationQueryInput = document.querySelector('#location-query-input');
+    const locationQuery = locationQueryInput.value.trim();
     processWeatherData(locationQuery);
+    
+    // Clear the search input field after data retrieved
+    locationQueryInput.value = "";
 }
 
 export function initialise() {
