@@ -19,6 +19,12 @@ function updateLocationRegion(region) {
     locationRegionElement.textContent = region;
 }
 
+function updateLocationCountry(country) {
+    const locationCountryElement = document.querySelector('.location-country');
+
+    locationCountryElement.textContent = country;
+}
+
 function updateTemperatureValue(temperature) {
     const tempValueElement = document.querySelector('.temp-value');
 
@@ -57,7 +63,8 @@ function updateCurrentHumidity(humidity) {
 
 export function updateCurrentWeatherUI(weatherData) {
     updateLocationName(weatherData.locationName);
-    updateLocationRegion(weatherData.locationRegion)
+    updateLocationRegion(weatherData.locationRegion);
+    updateLocationCountry(weatherData.locationCountry);
     updateTemperatureValue(weatherData.currentTempC);
     updateFeelsLikeTempValue(weatherData.feelsLikeC);
     updateCurrentWeatherIcon(weatherData.currentConditionIcon);
