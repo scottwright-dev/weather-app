@@ -6,6 +6,12 @@ function updateLocationName(location) {
     locationNameElement.textContent = location;
 }
 
+function updateLocationRegion(region) {
+    const locationRegionElement = document.querySelector('.location-region');
+
+    locationRegionElement.textContent = region;
+}
+
 function updateTemperatureValue(temperature) {
     const tempValueElement = document.querySelector('.temp-value');
 
@@ -20,9 +26,8 @@ function updateFeelsLikeTempValue(feelsLikeTemperature) {
 
 function updateCurrentWeatherIcon(currentConditionIcon) {
     const currentWeatherIconElement = document.querySelector('.current-condition-icon img');
-    const currentWeatherIcon = currentConditionIcon;
 
-    currentWeatherIconElement.src = currentWeatherIcon;
+    currentWeatherIconElement.src = currentConditionIcon;
 }
 
 function updateCurrentConditionText(currentCondition) {
@@ -31,10 +36,25 @@ function updateCurrentConditionText(currentCondition) {
     currentTextElement.textContent = currentCondition;
 }
 
+function updateCurrentWind(windSpeed) {
+    const windSpeedElement = document.querySelector('.wind-value');
+
+    windSpeedElement.textContent = windSpeed;
+}
+
+function updateCurrentHumidity(humidity) {
+    const humidityElement = document.querySelector('.humidity-value');
+
+    humidityElement.textContent = humidity;
+}
+
 export function updateCurrentWeatherUI(weatherData) {
     updateLocationName(weatherData.locationName);
+    updateLocationRegion(weatherData.locationRegion)
     updateTemperatureValue(weatherData.currentTempC);
     updateFeelsLikeTempValue(weatherData.feelsLikeC);
     updateCurrentWeatherIcon(weatherData.currentConditionIcon);
     updateCurrentConditionText(weatherData.currentCondition);
+    updateCurrentWind(weatherData.windMph);
+    updateCurrentHumidity(weatherData.humidity);
 }
