@@ -8,12 +8,12 @@
 </head>
 <body>
     <main class="main">
+        <form id="location-query">
+            <input type="text" id="location-query-input" placeholder="Search location" required>
+            <button type="submit" class="search-btn" aria-label="location search button">Search</button>
+            <div class="search-error-display"></div>
+        </form>
         <section class="current-weather">
-            <form id="location-query">
-                <input type="text" id="location-query-input" placeholder="Search location" required>
-                <button type="submit" class="search-btn" aria-label="location search button">Search</button>
-                <div class="search-error-display"></div>
-            </form>
             <div class="current-weather-data">
                 <div class="location-info">
                     <h1 class="location-name"></h1>
@@ -34,6 +34,42 @@
                 </div>
             </div>
         </section>
+        <section class="forecast-weather">
+            <h2>Forecast</h2>
+            <div class="forecast-day">
+                <div class="forecast-date"></div>
+                <div class="forecast-condition">
+                    <img class="forecast-icon" width="40" height="40" aria-label="Weather condition icon for Day 1">
+                    <p class="forecast-condition-text"></p>
+                </div>
+                <div class="forecast-temperature">
+                    <span class="forecast-temp-value">--</span><span class="forecast-temp-unit">°C</span>
+                    <div class="forecast-rain">Chance of rain: <span class="forecast-rain-value">--</span>%</div>
+                </div>
+            </div>
+            <div class="forecast-day">
+                <div class="forecast-date"></div>
+                <div class="forecast-condition">
+                    <img class="forecast-icon" width="40" height="40" aria-label="Weather condition icon for Day 2">
+                    <p class="forecast-condition-text"></p>
+                </div>
+                <div class="forecast-temperature">
+                    <span class="forecast-temp-value">--</span><span class="forecast-temp-unit">°C</span>
+                    <div class="forecast-rain">Chance of rain: <span class="forecast-rain-value">--</span>%</div>
+                </div>
+            </div>
+            <div class="forecast-day">
+                <div class="forecast-date"></div>
+                <div class="forecast-condition">
+                    <img class="forecast-icon" width="40" height="40" aria-label="Weather condition icon for Day 3">
+                    <p class="forecast-condition-text"></p>
+                </div>
+                <div class="forecast-temperature">
+                    <span class="forecast-temp-value">--</span><span class="forecast-temp-unit">°C</span>
+                    <div class="forecast-rain">Chance of rain: <span class="forecast-rain-value">--</span>%</div>
+                </div>
+            </div>
+        </section>        
     </main>
 </body>
 </html>
