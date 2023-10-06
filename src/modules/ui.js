@@ -1,3 +1,10 @@
+// ERROR MESSAGING
+
+export function displayErrorMessage(message) {
+    const errorDisplayElement = document.querySelector('.search-error-display');
+    errorDisplayElement.textContent = message;
+}
+
 // CURRENT WEATHER DATA
 
 function updateLocationName(location) {

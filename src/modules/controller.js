@@ -1,13 +1,16 @@
 import { fetchWeatherData } from "./api";
-import { updateCurrentWeatherUI } from "./ui";
+import { updateCurrentWeatherUI, displayErrorMessage } from "./ui";
 
 function processWeatherData(locationQuery) {
     fetchWeatherData(locationQuery)
         .then(weatherData => {
+            if (weatherData.error) {
+                displayErrorMessage(weatherData.error)
+            }
             updateCurrentWeatherUI(weatherData);  
         })
         .catch(error => {
-            console.error(error);
+            displayErrorMessage(error.message)
         });
 }
 
@@ -17,8 +20,9 @@ function handleFormSubmit(event) {
     const locationQuery = locationQueryInput.value.trim();
     processWeatherData(locationQuery);
     
-    // Clear the search input field after data retrieved
+    // Clear search input & any error msg display
     locationQueryInput.value = "";
+    displayErrorMessage("");
 }
 
 export function initialise() {

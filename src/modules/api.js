@@ -9,15 +9,29 @@ async function fetchAPIData(url) {
 async function handleAPIResponse(response) {
     if (!response.ok) {
         if (response.status === 400) {
-            throw new Error("Location not found, please try again.");
+            return {
+                success: false,
+                error: "Location not found, please try again."
+            };
         }
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        return {
+            success: false,
+            error: `HTTP error! Status: ${response.status}`
+        };
     }
+
     const apiResponse = await response.json();
     if (!apiResponse) {
-        throw new Error("No Data was fetched from your API call");
+        return {
+            success: false,
+            error: "No Data was fetched from your API call"
+        };
     }
-    return apiResponse;
+
+    return {
+        success: true,
+        data: apiResponse
+    };
 }
 
 export async function fetchWeatherData(locationQuery) {
@@ -25,10 +39,14 @@ export async function fetchWeatherData(locationQuery) {
     const response = await fetchAPIData(url);
     const fetchedData = await handleAPIResponse(response);
 
+    if (!fetchedData.success) {
+        throw new Error(fetchedData.error);
+    }
+
     return {
-        ...extractLocationData(fetchedData),
-        ...extractCurrentWeatherData(fetchedData),
-        forecast: extractForecastData(fetchedData)
+        ...extractLocationData(fetchedData.data),
+        ...extractCurrentWeatherData(fetchedData.data),
+        forecast: extractForecastData(fetchedData.data)
     };
 }
 
