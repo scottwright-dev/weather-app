@@ -73,7 +73,7 @@ function extractCurrentWeatherData(data) {
     };
 }
 
-function extractForecastData(data) {
+export function extractForecastData(data) {
     return data.forecast.forecastday.map(day => ({
         date: formatDate(day.date),
         condition: day.day.condition.text,
