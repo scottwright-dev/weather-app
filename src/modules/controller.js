@@ -1,16 +1,20 @@
 import { fetchWeatherData } from "./api";
-import { updateCurrentWeatherUI, displayErrorMessage } from "./ui";
+import { updateCurrentWeatherUI, updateForeCastWeatherUI, displayErrorMessage } from "./ui";
 
 function processWeatherData(locationQuery) {
+
     fetchWeatherData(locationQuery)
         .then(weatherData => {
+            console.log(weatherData.forecast);
             if (weatherData.error) {
-                displayErrorMessage(weatherData.error)
+                displayErrorMessage(weatherData.error);
+                return;
             }
-            updateCurrentWeatherUI(weatherData);  
+            updateCurrentWeatherUI(weatherData);
+            updateForeCastWeatherUI(weatherData);  
         })
         .catch(error => {
-            displayErrorMessage(error.message)
+            displayErrorMessage(error.message);
         });
 }
 
