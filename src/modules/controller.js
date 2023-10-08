@@ -5,7 +5,6 @@ function processWeatherData(locationQuery) {
 
     fetchWeatherData(locationQuery)
         .then(weatherData => {
-            console.log(weatherData.forecast);
             if (weatherData.error) {
                 displayErrorMessage(weatherData.error);
                 return;
