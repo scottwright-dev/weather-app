@@ -72,3 +72,42 @@ export function updateCurrentWeatherUI(weatherData) {
     updateCurrentWind(weatherData.windMph);
     updateCurrentHumidity(weatherData.humidity);
 }
+
+// FORECAST WEATHER DATA
+
+function updateForecastDate(dayIndex, date) {
+    const forecastDateElement = document.querySelector(`.forecast-date-${dayIndex + 1}`);
+    forecastDateElement.textContent = date;
+}
+
+function updateForecastIcon(dayIndex, iconSrc) {
+    const forecastIconElement = document.querySelectorAll('.forecast-icon')[dayIndex];
+    forecastIconElement.src = iconSrc;
+}
+
+function updateForecastConditionText(dayIndex, conditionText) {
+    const forecastConditionTextElement = document.querySelectorAll('.forecast-condition-text')[dayIndex];
+    forecastConditionTextElement.textContent = conditionText;
+}
+
+function updateForecastTemperature(dayIndex, temperature) {
+    const forecastTempValueElement = document.querySelectorAll('.forecast-temp-value')[dayIndex];
+    forecastTempValueElement.textContent = temperature;
+}
+
+function updateForecastRainChance(dayIndex, rainChance) {
+    const forecastRainValueElement = document.querySelectorAll('.forecast-rain-value')[dayIndex];
+    forecastRainValueElement.textContent = rainChance;
+}
+
+export function updateForeCastWeatherUI(weatherData) {
+    const forecastData = weatherData.forecast;
+    
+    forecastData.forEach((day, index) => {
+        updateForecastDate(index, day.date);
+        updateForecastIcon(index, day.icon);
+        updateForecastConditionText(index, day.condition);
+        updateForecastTemperature(index, day.avgTempC);
+        updateForecastRainChance(index, day.rainChance);
+    });
+}
