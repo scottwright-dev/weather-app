@@ -1,4 +1,4 @@
-import './styles/style.css';
+import './input.css';
 import { initialise } from './modules/controller';
 
 initialise();
