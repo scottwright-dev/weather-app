@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="main.js" defer></script>
     <title>Weather Wise</title>
+    <link href="/dist/output.css" rel="stylesheet">
 </head>
-<body>
+<body class="min-h-screen">
     <main class="main">
         <form id="location-query">
             <input type="text" id="location-query-input" placeholder="Search location" required>
@@ -34,7 +35,7 @@
                 </div>
             </div>
         </section>
-        <section class="forecast-weather">
+        <section class="forecast-weather ">
             <h2>Forecast</h2>
             <div class="forecast-day">
                 <div class="forecast-date-1"></div>
@@ -44,7 +45,7 @@
                 </div>
                 <div class="forecast-temperature">
                     <span class="forecast-temp-value">--</span><span class="forecast-temp-unit">°C</span>
-                    <div class="forecast-rain">Chance of rain: <span class="forecast-rain-value">--</span>%</div>
+                    <div class="forecast-rain ">Chance of rain: <span class="forecast-rain-value">--</span>%</div>
                 </div>
             </div>
             <div class="forecast-day">
