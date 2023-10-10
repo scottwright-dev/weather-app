@@ -7,10 +7,11 @@
     <title>Weather Wise</title>
     <link href="/dist/output.css" rel="stylesheet" />
   </head>
-  <body class="min-h-screen">
-    <main class="main">
+  <body>
+    <main class="main justify-top flex min-h-screen flex-col items-center bg-neutral-200 p-10 text-neutral-900">
       <form id="location-query">
         <input
+          class="rounded bg-neutral-50 p-1 focus:outline-none focus:ring-2 focus:ring-neutral-400"
           type="text"
           id="location-query-input"
           placeholder="Search location"
@@ -18,41 +19,46 @@
         />
         <button
           type="submit"
-          class="search-btn"
+          class="search-btn ml-2 rounded bg-neutral-400 p-1 px-4 text-neutral-50 hover:bg-neutral-700"
           aria-label="location search button"
         >
           Search
         </button>
-        <div class="search-error-display"></div>
+        <div class="search-error-display mt-2 min-h-[24px]"></div>
       </form>
-      <section class="current-weather">
-        <div class="current-weather-data">
-          <div class="location-info">
-            <h1 class="location-name"></h1>
-            <h2 class="location-region"></h2>
-            <h2 class="location-country"></h2>
+      <section class="current-weather text-neutral-50 mt-2">
+        <div class="current-weather-data border rounded p-4 bg-neutral-400">
+ 
+          <div class="current-weather-row-1 flex items-center justify-around space-x-4 text-right">
+            <div class="current-condition-icon">
+              <img width="126" height="126" aria-label="Current condition icon" />
+              <p class="current-condition-text text-center"></p>
+            </div>
+            <div class="temperature">
+                <div class="flex items-start justify-end">
+                    <span class="temp-value text-6xl">22</span><span class="temp-unit">°C</span>
+                </div>
+              <div class="feels-like">
+                Feels like: <span class="feels-like-value">24</span>°C
+              </div>
+              <div class="wind">
+                Wind: <span class="wind-value">5.7</span><span class="wind-unit-type">mph</span>
+              </div>
+              <div class="humidity">
+                Humidity: <span class="humidity-value">69</span>%
+              </div>
+            </div>
           </div>
-          <div class="temperature">
-            <span class="temp-value">--</span><span class="temp-unit">°C</span>
-            <div class="feels-like">
-              Feels like: <span class="feels-like-value">--</span>°C
-            </div>
-            <div class="wind">
-              Wind: <span class="wind-value">--</span
-              ><span class="wind-unit-type">mph</span>
-            </div>
-            <div class="humidity">
-              Humidity: <span class="humidity-value">--</span>%
-            </div>
-          </div>
-          <div class="current-condition-icon">
-            <img width="50" height="50" aria-label="Current condition icon" />
-            <p class="current-condition-text"></p>
+          
+          <div class="location-info mt-4 text-left">
+            <h1 class="location-name text-3xl font-semibold">Zurich</h1>
+            <h2 class="location-region text-1xl">City of London, Greater London</h2>
+            <h2 class="location-country text-1xl font-semibold">United Kingdom</h2>
           </div>
         </div>
-      </section>
-      <section class="forecast-weather">
-        <h2>Forecast</h2>
+      </section>           
+      <section class="forecast-weather text-center mt-4">
+        <h2 class="text-3xl">Forecast</h2>
         <div class="forecast-day">
           <div class="forecast-date-1"></div>
           <div class="forecast-condition">
