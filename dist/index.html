@@ -8,56 +8,94 @@
     <link href="/dist/output.css" rel="stylesheet" />
   </head>
   <body>
-    <main class="main justify-top flex min-h-screen flex-col items-center bg-neutral-200 p-10 text-neutral-900">
-      <form id="location-query">
+    <main
+      class="main justify-top flex min-h-screen flex-col items-center bg-neutral-200 p-10 text-neutral-900"
+    >
+      <form
+        id="location-query"
+        class="form relative flex w-full justify-center sm:w-full md:w-3/4 lg:w-2/3 xl:w-1/3"
+      >
         <input
-          class="rounded bg-neutral-50 p-1 focus:outline-none focus:ring-2 focus:ring-neutral-400"
           type="text"
           id="location-query-input"
-          placeholder="Search location"
+          class="search-field flex-grow rounded bg-neutral-50 px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-neutral-400"
+          placeholder="Enter a town, city or post/zip code"
           required
         />
         <button
           type="submit"
-          class="search-btn ml-2 rounded bg-neutral-400 p-1 px-4 text-neutral-50 hover:bg-neutral-700"
-          aria-label="location search button"
+          class="search-button absolute right-3 top-1/2 flex -translate-y-1/2 transform items-center"
         >
-          Search
+          <svg
+            class="h-7 w-7 fill-current"
+            xmlns="http://www.w3.org/2000/svg"
+            class="ionicon"
+            viewBox="0 0 512 512"
+          >
+            <path
+              d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+              fill="none"
+              stroke="currentColor"
+              stroke-miterlimit="10"
+              stroke-width="32"
+            />
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
+              stroke-width="32"
+              d="M338.29 338.29L448 448"
+            />
+          </svg>
         </button>
-        <div class="search-error-display mt-2 min-h-[24px]"></div>
       </form>
-      <section class="current-weather text-neutral-50 mt-2">
-        <div class="current-weather-data border rounded p-4 bg-neutral-400">
- 
-          <div class="current-weather-row-1 flex items-center justify-around space-x-4 text-right">
+      <div class="search-error-display mt-2 min-h-[24px]"></div>
+      <section
+        class="current-weather mt-2 w-full text-neutral-50 sm:w-full md:w-3/4 lg:w-2/3 xl:w-1/3"
+      >
+        <div class="current-weather-data rounded border bg-neutral-400 p-4">
+          <div
+            class="current-weather-row-1 flex items-center justify-between space-x-4 text-right"
+          >
             <div class="current-condition-icon">
-              <img width="126" height="126" aria-label="Current condition icon" />
-              <p class="current-condition-text text-center"></p>
+              <img
+                width="126"
+                height="126"
+                aria-label="Current condition icon"
+              />
+              <p class="current-condition-text pt-1.5 text-center"></p>
             </div>
-            <div class="temperature">
-                <div class="flex items-start justify-end">
-                    <span class="temp-value text-6xl">22</span><span class="temp-unit">°C</span>
-                </div>
+            <div class="current-condition-data mt-6">
+              <div class="flex items-start justify-end">
+                <span class="temp-value text-6xl">22</span
+                ><span class="temp-unit">°C</span>
+              </div>
               <div class="feels-like">
                 Feels like: <span class="feels-like-value">24</span>°C
               </div>
               <div class="wind">
-                Wind: <span class="wind-value">5.7</span><span class="wind-unit-type">mph</span>
+                Wind: <span class="wind-value">5.7</span
+                ><span class="wind-unit-type">mph</span>
               </div>
               <div class="humidity">
                 Humidity: <span class="humidity-value">69</span>%
               </div>
             </div>
           </div>
-          
+
           <div class="location-info mt-4 text-left">
             <h1 class="location-name text-3xl font-semibold">Zurich</h1>
-            <h2 class="location-region text-1xl">City of London, Greater London</h2>
-            <h2 class="location-country text-1xl font-semibold">United Kingdom</h2>
+            <h2 class="location-region text-1xl">
+              City of London, Greater London
+            </h2>
+            <h2 class="location-country text-1xl font-semibold">
+              United Kingdom
+            </h2>
           </div>
         </div>
-      </section>           
-      <section class="forecast-weather text-center mt-4">
+      </section>
+      <section class="forecast-weather mt-4 text-center">
         <h2 class="text-3xl">Forecast</h2>
         <div class="forecast-day">
           <div class="forecast-date-1"></div>
