@@ -16,7 +16,7 @@
         class="form relative flex w-full justify-center sm:w-full md:w-3/4 lg:w-2/3 xl:w-1/3"
       >
         <input
-          type="text"
+          type="search"
           id="location-query-input"
           class="search-field flex-grow rounded bg-neutral-200 px-4 py-2 pr-10 shadow focus:outline-none focus:ring-2 focus:ring-neutral-400"
           placeholder="Enter a town, city or post/zip code"
@@ -51,6 +51,7 @@
         </button>
       </form>
       <div class="search-error-display mt-2 min-h-[24px]"></div>
+
       <section
         class="current-weather mt-2 w-full text-neutral-900 shadow sm:w-full md:w-3/4 lg:w-2/3 xl:w-1/3"
       >
@@ -71,7 +72,7 @@
             <div class="current-condition-data mt-6 text-left">
               <div class="flex items-start justify-end">
                 <span class="temp-value mb-4 text-6xl">22</span>
-                <span class="temp-unit">°C</span>
+                <span class="temp-unit align-top">°C</span>
               </div>
               <div
                 class="feels-like mb-2 border-b border-neutral-400 pb-2 text-sm text-neutral-500"
@@ -79,7 +80,9 @@
                 Feels like:
                 <span class="feels-like-value text-base text-neutral-900"
                   >24</span
-                ><span class="wind-unit-type text-xs text-neutral-900">°C</span>
+                ><span class="wind-unit-type align-top text-xs text-neutral-900"
+                  >°C</span
+                >
               </div>
 
               <div
@@ -118,7 +121,7 @@
       </section>
 
       <section
-        class="forecast-weather mt-6 w-full flex-col items-center rounded bg-neutral-500 p-6 text-center text-neutral-200 shadow sm:w-full md:w-3/4 lg:w-2/3 xl:w-1/3"
+        class="forecast-weather mt-10 w-full flex-col items-center rounded bg-neutral-500 p-6 text-center text-neutral-200 shadow sm:w-full md:w-3/4 lg:w-2/3 xl:w-1/3"
       >
         <h2 class="text-left text-2xl">Forecast</h2>
         <div class="forecast-day">
