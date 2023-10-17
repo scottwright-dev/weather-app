@@ -60,7 +60,6 @@ function extractLocationData(data) {
 }
 
 function extractCurrentWeatherData(data) {
-  console.log(data);
   return {
     currentCondition: data.current.condition.text,
     currentConditionIcon: data.current.condition.icon,
