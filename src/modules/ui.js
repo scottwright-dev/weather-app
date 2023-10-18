@@ -1,3 +1,5 @@
+import overcastIcon from "../assets/weather-icons/overcast.svg";
+
 // ERROR MESSAGING
 
 export function displayErrorMessage(message) {
@@ -13,11 +15,11 @@ function updateLocationName(location) {
   locationNameElement.textContent = location;
 }
 
-function updateLocationRegion(region) {
-  const locationRegionElement = document.querySelector(".location-region");
+// function updateLocationRegion(region) {
+//   const locationRegionElement = document.querySelector(".location-region");
 
-  locationRegionElement.textContent = region;
-}
+//   locationRegionElement.textContent = region;
+// }
 
 function updateLocationCountry(country) {
   const locationCountryElement = document.querySelector(".location-country");
@@ -65,7 +67,7 @@ function updateCurrentHumidity(humidity) {
 
 export function updateCurrentWeatherUI(weatherData) {
   updateLocationName(weatherData.locationName);
-  updateLocationRegion(weatherData.locationRegion);
+  // updateLocationRegion(weatherData.locationRegion);
   updateLocationCountry(weatherData.locationCountry);
   updateTemperatureValue(weatherData.currentTempC);
   updateFeelsLikeTempValue(weatherData.feelsLikeC);
@@ -104,12 +106,12 @@ function updateForecastTemperature(dayIndex, temperature) {
   forecastTempValueElement.textContent = temperature;
 }
 
-function updateForecastRainChance(dayIndex, rainChance) {
-  const forecastRainValueElement = document.querySelectorAll(
-    ".forecast-rain-value",
-  )[dayIndex];
-  forecastRainValueElement.textContent = rainChance;
-}
+// function updateForecastRainChance(dayIndex, rainChance) {
+//   const forecastRainValueElement = document.querySelectorAll(
+//     ".forecast-rain-value",
+//   )[dayIndex];
+//   forecastRainValueElement.textContent = rainChance;
+// }
 
 export function updateForeCastWeatherUI(weatherData) {
   const forecastData = weatherData.forecast;
@@ -119,6 +121,14 @@ export function updateForeCastWeatherUI(weatherData) {
     updateForecastIcon(index, day.icon);
     updateForecastConditionText(index, day.condition);
     updateForecastTemperature(index, day.avgTempC);
-    updateForecastRainChance(index, day.rainChance);
+    // updateForecastRainChance(index, day.rainChance);
   });
 }
+
+// WEATHER ICONS
+
+// here im going to map my custom icons in key value pairs, key is the data icon ref,
+// the value will be the url of the new icon
+const weatherIcons = {
+  1000: overcastIcon,
+};
