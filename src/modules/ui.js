@@ -1,5 +1,3 @@
-import overcastIcon from "../assets/weather-icons/overcast.svg";
-
 // ERROR MESSAGING
 
 export function displayErrorMessage(message) {
@@ -124,11 +122,3 @@ export function updateForeCastWeatherUI(weatherData) {
     // updateForecastRainChance(index, day.rainChance);
   });
 }
-
-// WEATHER ICONS
-
-// here im going to map my custom icons in key value pairs, key is the data icon ref,
-// the value will be the url of the new icon
-const weatherIcons = {
-  1000: overcastIcon,
-};
