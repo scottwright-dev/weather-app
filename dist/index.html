@@ -59,9 +59,10 @@
             <h2 class="current-weather-title text-2xl text-slate-700">
               Current Weather
             </h2>
-            <span class="temp-switch text-slate-700 hover:cursor-pointer"
-              >°C / °F</span
-            >
+            <div class="temp-toggle text-slate-700 hover:cursor-pointer">
+              <span class="celcius-toggle font-bold">°C</span> /
+              <span class="fahrenheit-toggle text-slate-500">°F</span>
+            </div>
           </div>
           <div
             class="current-weather-row-1 flex items-center justify-between space-x-4 text-right"
@@ -128,7 +129,7 @@
                 ><span class="forecast-temp-unit align-top text-xs">°C</span>
               </div>
               <img
-                class="forecast-icon mb-2 h-16 w-16 rounded bg-slate-50 p-2 shadow-xl mx-auto"
+                class="forecast-icon mx-auto mb-2 h-16 w-16 rounded bg-slate-50 p-2 shadow-xl"
                 width="40"
                 height="40"
                 aria-label="Weather condition icon for Day 1"
@@ -147,7 +148,7 @@
                 ><span class="forecast-temp-unit align-top text-xs">°C</span>
               </div>
               <img
-                class="forecast-icon mb-2 h-16 w-16 rounded bg-slate-50 p-2 shadow-xl mx-auto"
+                class="forecast-icon mx-auto mb-2 h-16 w-16 rounded bg-slate-50 p-2 shadow-xl"
                 width="40"
                 height="40"
                 aria-label="Weather condition icon for Day 2"
@@ -166,7 +167,7 @@
                 ><span class="forecast-temp-unit align-top text-xs">°C</span>
               </div>
               <img
-                class="forecast-icon mb-2 h-16 w-16 rounded bg-slate-50 p-2 shadow-xl mx-auto"
+                class="forecast-icon mx-auto mb-2 h-16 w-16 rounded bg-slate-50 p-2 shadow-xl"
                 width="40"
                 height="40"
                 aria-label="Weather condition icon for Day 3"
