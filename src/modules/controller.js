@@ -31,7 +31,29 @@ function handleFormSubmit(event) {
   displayErrorMessage("");
 }
 
+function tempUnitToggle() {
+  const celsiusToggle = document.querySelector(".celsius-toggle");
+  const fahrenheitToggle = document.querySelector(".fahrenheit-toggle");
+
+  if (celsiusToggle.classList.contains("font-bold")) {
+    celsiusToggle.classList.remove("font-bold");
+    celsiusToggle.classList.add("text-slate-500");
+
+    fahrenheitToggle.classList.add("font-bold");
+    fahrenheitToggle.classList.remove("text-slate-500");
+  } else {
+    celsiusToggle.classList.add("font-bold");
+    celsiusToggle.classList.remove("text-slate-500");
+
+    fahrenheitToggle.classList.remove("font-bold");
+    fahrenheitToggle.classList.add("text-slate-500");
+  }
+}
+
 export function initialise() {
   const searchForm = document.querySelector("#location-query");
   searchForm.addEventListener("submit", handleFormSubmit);
+
+  const tempUnitToggleElement = document.querySelector(".temp-toggle");
+  tempUnitToggleElement.addEventListener("click", tempUnitToggle);
 }
