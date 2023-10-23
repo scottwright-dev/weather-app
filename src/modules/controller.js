@@ -49,8 +49,7 @@ function tempUnitToggle() {
     fahrenheitToggle.classList.add("text-slate-500");
   }
 }
-
-export function initialise() {
+export default function initialise() {
   const searchForm = document.querySelector("#location-query");
   searchForm.addEventListener("submit", handleFormSubmit);
 
