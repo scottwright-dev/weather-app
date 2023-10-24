@@ -119,11 +119,15 @@ function updateForecastConditionText(dayIndex, conditionText) {
   forecastConditionTextElement.textContent = conditionText;
 }
 
-function updateForecastTemperature(dayIndex, temperature) {
-  const forecastTempValueElement = document.querySelectorAll(
-    ".forecast-temp-value",
-  )[dayIndex];
-  forecastTempValueElement.textContent = temperature;
+function updateForecastTemperature(dayIndex, avgTempC, avgTempF) {
+  const forecastTempValueElement = document.querySelectorAll(".forecast-temp-value")[dayIndex];
+  const forecastTempUnitElement = document.querySelectorAll(".forecast-temp-unit")[dayIndex];
+  if(temperatureUnit === "C") {
+    forecastTempValueElement.textContent = avgTempC;
+  } else {
+    forecastTempValueElement.textContent = avgTempF;
+    forecastTempUnitElement.textContent = '°F'
+  }
 }
 
 // function updateForecastRainChance(dayIndex, rainChance) {
@@ -140,7 +144,7 @@ export function updateForeCastWeatherUI(weatherData) {
     updateForecastDate(index, day.date);
     updateForecastIcon(index, day.icon);
     updateForecastConditionText(index, day.condition);
-    updateForecastTemperature(index, day.avgTempC);
+    updateForecastTemperature(index, day.avgTempC, day.avgTempF);
     // updateForecastRainChance(index, day.rainChance);
   });
 }
@@ -169,4 +173,5 @@ export function tempUnitToggle() {
   }
 
   updateCurrentWeatherUI(getLatestWeatherData());
+  updateForeCastWeatherUI(getLatestWeatherData());
 }
