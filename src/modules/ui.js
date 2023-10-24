@@ -1,3 +1,8 @@
+import { getLatestWeatherData } from "./controller";
+
+// variable for toggling C/F
+let temperatureUnit = "C";
+
 // ERROR MESSAGING
 
 export function displayErrorMessage(message) {
@@ -25,16 +30,33 @@ function updateLocationCountry(country) {
   locationCountryElement.textContent = country;
 }
 
-function updateTemperatureValue(temperature) {
+function updateTemperatureValue(temperatureC, temperatureF) {
   const tempValueElement = document.querySelector(".temp-value");
+  const tempUnitElement = document.querySelector(".temp-unit");
 
-  tempValueElement.textContent = temperature;
+  if (temperatureUnit === "C") {
+    tempValueElement.textContent = temperatureC;
+    tempUnitElement.textContent = "°C";
+  } else {
+    tempValueElement.textContent = temperatureF;
+    tempUnitElement.textContent = "°F";
+  }
 }
 
-function updateFeelsLikeTempValue(feelsLikeTemperature) {
+function updateFeelsLikeTempValue(
+  feelsLikeTemperatureC,
+  feelsLikeTemperatureF,
+) {
   const feelsLikeElement = document.querySelector(".feels-like-value");
+  const feelsLikeUnitElement = document.querySelector(".feels-like-unit-type");
 
-  feelsLikeElement.textContent = feelsLikeTemperature;
+  if (temperatureUnit === "C") {
+    feelsLikeElement.textContent = feelsLikeTemperatureC;
+    feelsLikeUnitElement.textContent = "°C";
+  } else {
+    feelsLikeElement.textContent = feelsLikeTemperatureF;
+    feelsLikeUnitElement.textContent = "°F";
+  }
 }
 
 function updateCurrentWeatherIcon(currentConditionIcon) {
@@ -67,8 +89,8 @@ export function updateCurrentWeatherUI(weatherData) {
   updateLocationName(weatherData.locationName);
   // updateLocationRegion(weatherData.locationRegion);
   updateLocationCountry(weatherData.locationCountry);
-  updateTemperatureValue(weatherData.currentTempC);
-  updateFeelsLikeTempValue(weatherData.feelsLikeC);
+  updateTemperatureValue(weatherData.currentTempC, weatherData.currentTempF);
+  updateFeelsLikeTempValue(weatherData.feelsLikeC, weatherData.feelsLikeF);
   updateCurrentWeatherIcon(weatherData.currentConditionIcon);
   updateCurrentConditionText(weatherData.currentCondition);
   updateCurrentWind(weatherData.windMph);
@@ -121,4 +143,30 @@ export function updateForeCastWeatherUI(weatherData) {
     updateForecastTemperature(index, day.avgTempC);
     // updateForecastRainChance(index, day.rainChance);
   });
+}
+
+// TEMP UNIT UI TOGGLE
+export function tempUnitToggle() {
+  const celsiusToggle = document.querySelector(".celsius-toggle");
+  const fahrenheitToggle = document.querySelector(".fahrenheit-toggle");
+
+  if (celsiusToggle.classList.contains("font-bold")) {
+    celsiusToggle.classList.remove("font-bold");
+    celsiusToggle.classList.add("text-slate-500");
+
+    fahrenheitToggle.classList.add("font-bold");
+    fahrenheitToggle.classList.remove("text-slate-500");
+
+    temperatureUnit = "F";
+  } else {
+    celsiusToggle.classList.add("font-bold");
+    celsiusToggle.classList.remove("text-slate-500");
+
+    fahrenheitToggle.classList.remove("font-bold");
+    fahrenheitToggle.classList.add("text-slate-500");
+
+    temperatureUnit = "C";
+  }
+
+  updateCurrentWeatherUI(getLatestWeatherData());
 }
