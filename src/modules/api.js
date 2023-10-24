@@ -68,8 +68,8 @@ function extractCurrentWeatherData(data) {
     currentTempF: Math.round(data.current.temp_f),
     feelsLikeF: Math.round(data.current.feelslike_f),
     humidity: data.current.humidity,
-    windKph: data.current.wind_kph,
-    windMph: data.current.wind_mph,
+    windKph: Math.round(data.current.wind_kph),
+    windMph: Math.round(data.current.wind_mph),
   };
 }
 
