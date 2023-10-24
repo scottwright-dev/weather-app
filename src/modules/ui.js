@@ -124,7 +124,7 @@ function updateForecastTemperature(dayIndex, avgTempC, avgTempF) {
   const forecastTempUnitElement = document.querySelectorAll(".forecast-temp-unit")[dayIndex];
   if(temperatureUnit === "C") {
     forecastTempValueElement.textContent = avgTempC;
-    forecastTempUnitElement.textContent = '°c';
+    forecastTempUnitElement.textContent = '°C';
   } else {
     forecastTempValueElement.textContent = avgTempF;
     forecastTempUnitElement.textContent = '°F';
