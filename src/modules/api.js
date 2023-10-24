@@ -63,10 +63,10 @@ function extractCurrentWeatherData(data) {
   return {
     currentCondition: data.current.condition.text,
     currentConditionIcon: data.current.condition.icon,
-    currentTempC: data.current.temp_c,
-    feelsLikeC: data.current.feelslike_c,
-    currentTempF: data.current.temp_f,
-    feelsLikeF: data.current.feelslike_f,
+    currentTempC: Math.round(data.current.temp_c),
+    feelsLikeC: Math.round(data.current.feelslike_c),
+    currentTempF: Math.round(data.current.temp_f),
+    feelsLikeF: Math.round(data.current.feelslike_f),
     humidity: data.current.humidity,
     windKph: data.current.wind_kph,
     windMph: data.current.wind_mph,
@@ -78,8 +78,8 @@ export function extractForecastData(data) {
     date: formatDate(day.date),
     condition: day.day.condition.text,
     icon: day.day.condition.icon,
-    avgTempC: day.day.avgtemp_c,
-    avgTempF: day.day.avgtemp_f,
+    avgTempC: Math.round(day.day.avgtemp_c),
+    avgTempF: Math.round(day.day.avgtemp_f),
     rainChance: day.day.daily_chance_of_rain,
   }));
 }
