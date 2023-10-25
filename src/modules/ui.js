@@ -21,12 +21,6 @@ function updateLocationName(location) {
   locationNameElement.textContent = location;
 }
 
-// function updateLocationRegion(region) {
-//   const locationRegionElement = document.querySelector(".location-region");
-
-//   locationRegionElement.textContent = region;
-// }
-
 function updateLocationCountry(country) {
   const locationCountryElement = document.querySelector(".location-country");
 
@@ -90,7 +84,6 @@ function updateCurrentHumidity(humidity) {
 
 export function updateCurrentWeatherUI(weatherData) {
   updateLocationName(weatherData.locationName);
-  // updateLocationRegion(weatherData.locationRegion);
   updateLocationCountry(weatherData.locationCountry);
   updateTemperatureValue(weatherData.currentTempC, weatherData.currentTempF);
   updateFeelsLikeTempValue(weatherData.feelsLikeC, weatherData.feelsLikeF);
@@ -138,13 +131,6 @@ function updateForecastTemperature(dayIndex, avgTempC, avgTempF) {
   }
 }
 
-// function updateForecastRainChance(dayIndex, rainChance) {
-//   const forecastRainValueElement = document.querySelectorAll(
-//     ".forecast-rain-value",
-//   )[dayIndex];
-//   forecastRainValueElement.textContent = rainChance;
-// }
-
 export function updateForeCastWeatherUI(weatherData) {
   const forecastData = weatherData.forecast;
 
@@ -153,7 +139,6 @@ export function updateForeCastWeatherUI(weatherData) {
     updateForecastIcon(index, day.icon);
     updateForecastConditionText(index, day.condition);
     updateForecastTemperature(index, day.avgTempC, day.avgTempF);
-    // updateForecastRainChance(index, day.rainChance);
   });
 }
 
