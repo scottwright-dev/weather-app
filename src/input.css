@@ -7,3 +7,7 @@
   appearance: none;
   display: none;
 }
+
+.forecast-day {
+  @apply rounded bg-slate-100 p-2 shadow-lg;
+}
