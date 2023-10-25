@@ -4,6 +4,8 @@ import {
   updateForeCastWeatherUI,
   displayErrorMessage,
   tempUnitToggle,
+  showLoadingSpinner,
+  hideLoadingSpinner,
 } from "./ui";
 
 let latestWeatherData = null;
@@ -13,6 +15,7 @@ export function getLatestWeatherData() {
 }
 
 function processWeatherData(locationQuery) {
+  showLoadingSpinner();
   fetchWeatherData(locationQuery)
     .then((weatherData) => {
       if (weatherData.error) {
@@ -26,6 +29,9 @@ function processWeatherData(locationQuery) {
     })
     .catch((error) => {
       displayErrorMessage(error.message);
+    })
+    .finally(() => {
+      hideLoadingSpinner();
     });
 }
 
@@ -46,4 +52,6 @@ export default function initialise() {
 
   const tempUnitToggleElement = document.querySelector(".temp-toggle");
   tempUnitToggleElement.addEventListener("click", tempUnitToggle);
+
+  hideLoadingSpinner();
 }
