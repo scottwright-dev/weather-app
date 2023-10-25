@@ -120,14 +120,18 @@ function updateForecastConditionText(dayIndex, conditionText) {
 }
 
 function updateForecastTemperature(dayIndex, avgTempC, avgTempF) {
-  const forecastTempValueElement = document.querySelectorAll(".forecast-temp-value")[dayIndex];
-  const forecastTempUnitElement = document.querySelectorAll(".forecast-temp-unit")[dayIndex];
-  if(temperatureUnit === "C") {
+  const forecastTempValueElement = document.querySelectorAll(
+    ".forecast-temp-value",
+  )[dayIndex];
+  const forecastTempUnitElement = document.querySelectorAll(
+    ".forecast-temp-unit",
+  )[dayIndex];
+  if (temperatureUnit === "C") {
     forecastTempValueElement.textContent = avgTempC;
-    forecastTempUnitElement.textContent = '°C';
+    forecastTempUnitElement.textContent = "°C";
   } else {
     forecastTempValueElement.textContent = avgTempF;
-    forecastTempUnitElement.textContent = '°F';
+    forecastTempUnitElement.textContent = "°F";
   }
 }
 
@@ -151,6 +155,7 @@ export function updateForeCastWeatherUI(weatherData) {
 }
 
 // TEMP UNIT UI TOGGLE
+
 export function tempUnitToggle() {
   const celsiusToggle = document.querySelector(".celsius-toggle");
   const fahrenheitToggle = document.querySelector(".fahrenheit-toggle");
@@ -175,4 +180,16 @@ export function tempUnitToggle() {
 
   updateCurrentWeatherUI(getLatestWeatherData());
   updateForeCastWeatherUI(getLatestWeatherData());
+}
+
+// LOADING DATA SPINNER
+
+export function showLoadingSpinner() {
+  const spinnerElement = document.querySelector(".loading-spinner");
+  spinnerElement.classList.remove("hidden");
+}
+
+export function hideLoadingSpinner() {
+  const spinnerElement = document.querySelector(".loading-spinner");
+  spinnerElement.classList.add("hidden");
 }
