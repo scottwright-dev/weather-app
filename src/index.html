@@ -146,9 +146,11 @@
         class="forecast-weather mt-10 w-full rounded bg-slate-600 p-6 text-center text-slate-50 shadow sm:w-full md:w-3/4 lg:w-2/3 xl:w-1/3"
       >
         <h2 class="mb-8 text-left text-2xl">3 Day Forecast</h2>
-        <div class="flex flex-row justify-center gap-8">
+        <div
+          class="forecast-days-container flex flex-col items-center justify-center gap-8 sm:flex-row"
+        >
           <div
-            class="forecast-day flex flex-col items-center space-y-2 rounded bg-slate-100 p-2 shadow-lg"
+            class="forecast-day flex w-48 flex-col items-center space-y-2 rounded bg-slate-100 p-2 shadow-lg sm:w-auto"
           >
             <div class="forecast-date-1 mb-4 text-sm text-slate-700"></div>
             <div class="forecast-condition font-light">
@@ -171,7 +173,7 @@
           </div>
 
           <div
-            class="forecast-day flex flex-col items-center space-y-2 rounded bg-slate-100 p-2 shadow-lg"
+            class="forecast-day flex w-48 flex-col items-center space-y-2 rounded bg-slate-100 p-2 shadow-lg sm:w-auto"
           >
             <div class="forecast-date-2 mb-4 text-sm text-slate-700"></div>
             <div class="forecast-condition font-light">
@@ -194,7 +196,7 @@
           </div>
 
           <div
-            class="forecast-day flex flex-col items-center space-y-2 rounded bg-slate-100 p-2 shadow-lg"
+            class="forecast-day flex w-48 flex-col items-center space-y-2 rounded bg-slate-100 p-2 shadow-lg sm:w-auto"
           >
             <div class="forecast-date-3 mb-4 text-sm text-slate-700"></div>
             <div class="forecast-condition font-light">
