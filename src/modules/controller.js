@@ -52,6 +52,4 @@ export default function initialise() {
 
   const tempUnitToggleElement = document.querySelector(".temp-toggle");
   tempUnitToggleElement.addEventListener("click", tempUnitToggle);
-
-  hideLoadingSpinner();
 }
