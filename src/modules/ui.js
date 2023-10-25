@@ -3,6 +3,9 @@ import { getLatestWeatherData } from "./controller";
 // variable for toggling C/F
 let temperatureUnit = "C";
 
+// loading spinner timeout variable
+let spinnerTimeout;
+
 // ERROR MESSAGING
 
 export function displayErrorMessage(message) {
@@ -185,11 +188,16 @@ export function tempUnitToggle() {
 // LOADING DATA SPINNER
 
 export function showLoadingSpinner() {
-  const spinnerElement = document.querySelector(".loading-spinner");
-  spinnerElement.classList.remove("hidden");
+  spinnerTimeout = setTimeout(() => {
+    const spinnerElement = document.querySelector(".loading-spinner");
+    spinnerElement.classList.remove("hidden");
+    spinnerElement.classList.add("show");
+  }, 300);
 }
 
 export function hideLoadingSpinner() {
+  clearTimeout(spinnerTimeout);
   const spinnerElement = document.querySelector(".loading-spinner");
   spinnerElement.classList.add("hidden");
+  spinnerElement.classList.remove("show");
 }
