@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { getLatestWeatherData } from "./controller";
 
 // variable for toggling C/F

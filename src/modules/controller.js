@@ -1,4 +1,5 @@
 import { fetchWeatherData } from "./api";
+// eslint-disable-next-line import/no-cycle
 import {
   updateCurrentWeatherUI,
   updateForeCastWeatherUI,
