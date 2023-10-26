@@ -80,12 +80,12 @@ function updateCurrentWind(windSpeedMph, windSpeedKph) {
   const windSpeedElement = document.querySelector(".wind-value");
   const windUnitTypeElement = document.querySelector(".wind-unit-type");
 
-  if (windSpeedUnit === "mph") {
-    windSpeedElement.textContent = windSpeedMph;
-    windUnitTypeElement.textContent = "mph";
-  } else {
+  if (windSpeedUnit === "kph") {
     windSpeedElement.textContent = windSpeedKph;
     windUnitTypeElement.textContent = "kph";
+  } else {
+    windSpeedElement.textContent = windSpeedMph;
+    windUnitTypeElement.textContent = "mph";
   }
 }
 
@@ -158,20 +158,18 @@ export function updateForeCastWeatherUI(weatherData) {
 // WIND SPEED UNIT TOGGLE
 
 function setWindSpeedUnit() {
-  if (temperatureUnit === "F") {
-    windSpeedUnit = "mph"; // Set windSpeedUnit to mph when Fahrenheit is active
-  } else {
+  if (temperatureUnit === "C") {
     windSpeedUnit = "kph"; // Set windSpeedUnit to kph when Celsius is active
+  } else {
+    windSpeedUnit = "mph"; // Set windSpeedUnit to mph when Fahrenheit is active
   }
-  updateCurrentWind(
-    getLatestWeatherData().windMph,
-    getLatestWeatherData().windKph,
-  );
 }
 
 // TEMP UNIT UI TOGGLE
 
 export function tempUnitToggle() {
+  setWindSpeedUnit();
+
   const celsiusToggle = document.querySelector(".celsius-toggle");
   const fahrenheitToggle = document.querySelector(".fahrenheit-toggle");
 
@@ -192,7 +190,6 @@ export function tempUnitToggle() {
 
     temperatureUnit = "C";
   }
-  setWindSpeedUnit();
 
   updateCurrentWeatherUI(getLatestWeatherData());
   updateForeCastWeatherUI(getLatestWeatherData());
