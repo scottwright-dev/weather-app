@@ -1,10 +1,15 @@
 // eslint-disable-next-line import/no-cycle
 import { getLatestWeatherData } from "./controller";
 
-// variable for toggling C/F
+// GLOBAL VARIABLES
+
+// for toggling °C/°F units
 let temperatureUnit = "C";
 
-// loading spinner timeout variable
+// for toggling kph/mph units
+let windSpeedUnit = "mph";
+
+// for timeout loading spinner
 let spinnerTimeout;
 
 // ERROR MESSAGING
@@ -71,10 +76,17 @@ function updateCurrentConditionText(currentCondition) {
   currentTextElement.textContent = currentCondition;
 }
 
-function updateCurrentWind(windSpeed) {
+function updateCurrentWind(windSpeedMph, windSpeedKph) {
   const windSpeedElement = document.querySelector(".wind-value");
+  const windUnitTypeElement = document.querySelector(".wind-unit-type");
 
-  windSpeedElement.textContent = windSpeed;
+  if (windSpeedUnit === "mph") {
+    windSpeedElement.textContent = windSpeedMph;
+    windUnitTypeElement.textContent = "mph";
+  } else {
+    windSpeedElement.textContent = windSpeedKph;
+    windUnitTypeElement.textContent = "kph";
+  }
 }
 
 function updateCurrentHumidity(humidity) {
@@ -90,7 +102,7 @@ export function updateCurrentWeatherUI(weatherData) {
   updateFeelsLikeTempValue(weatherData.feelsLikeC, weatherData.feelsLikeF);
   updateCurrentWeatherIcon(weatherData.currentConditionIcon);
   updateCurrentConditionText(weatherData.currentCondition);
-  updateCurrentWind(weatherData.windMph);
+  updateCurrentWind(weatherData.windMph, weatherData.windKph);
   updateCurrentHumidity(weatherData.humidity);
 }
 
@@ -143,6 +155,20 @@ export function updateForeCastWeatherUI(weatherData) {
   });
 }
 
+// WIND SPEED UNIT TOGGLE
+
+function setWindSpeedUnit() {
+  if (temperatureUnit === "F") {
+    windSpeedUnit = "mph"; // Set windSpeedUnit to mph when Fahrenheit is active
+  } else {
+    windSpeedUnit = "kph"; // Set windSpeedUnit to kph when Celsius is active
+  }
+  updateCurrentWind(
+    getLatestWeatherData().windMph,
+    getLatestWeatherData().windKph,
+  );
+}
+
 // TEMP UNIT UI TOGGLE
 
 export function tempUnitToggle() {
@@ -166,6 +192,7 @@ export function tempUnitToggle() {
 
     temperatureUnit = "C";
   }
+  setWindSpeedUnit();
 
   updateCurrentWeatherUI(getLatestWeatherData());
   updateForeCastWeatherUI(getLatestWeatherData());
