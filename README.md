@@ -39,11 +39,6 @@ The focus of the assignment was to develop a weather app which fetches and proce
 - **Responsive UI design**:
   With a mobile-first design approach, the app ensures a consistent user experience on all devices.
 
-- **Webpack Bundling**:
-  Optimize resource loading by bundling JavaScript modules with Webpack.
-
-- **User-Friendly Interface**: Include a search bar and real-time data updates for a seamless user experience.
-
 <br>
 
 ## Project Reflections
@@ -70,7 +65,7 @@ My familiarity with Webpack deepened, especially when integrating plugins like H
 
 - **Geo-location functionality**: Whereby the app detects the users location and automatically presents data to the user on initial load.
 
-- **Extended forecast**: The dataset is currently limited to 3 days by the free tier restrictions of WeatherAPI.
+- **Extended 7 day forecast**:  Expand beyond the current 3-day limit imposed by the free tier of WeatherAPI.
 
 - **Enhanced UI data**: Include hourly forecasts for the upcoming 24 hours and details like sunrise/sunset timings.
 
