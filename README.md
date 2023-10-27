@@ -1,8 +1,8 @@
 ## Design
 
 <div align='center'>
-<img src='[src/assets/images/weather-wise-desktop.png](https://github.com/scottwright-dev/weather-app/blob/main/src/assets/images/weather-wise-desktop.png)' alt='Screenshot of desktop design'>
-  <img src='[src/assets/images/weather-wise-mobile.png](https://github.com/scottwright-dev/weather-app/blob/main/src/assets/images/weather-wise-mobile.png)' alt='Screenshot of mobile design'>
+    <img src='https://github.com/scottwright-dev/weather-app/blob/main/src/assets/images/weather-wise-desktop.png' alt='Screenshot of desktop design'>
+    <img src='https://github.com/scottwright-dev/weather-app/blob/main/src/assets/images/weather-wise-mobile.png' alt='Screenshot of mobile design'>
 </div>
 
 
