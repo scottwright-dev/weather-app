@@ -7,7 +7,7 @@ import { getLatestWeatherData } from "./controller";
 let temperatureUnit = "C";
 
 // for toggling kph/mph units
-let windSpeedUnit = "mph";
+let windSpeedUnit = "kph";
 
 // for timeout loading spinner
 let spinnerTimeout;
@@ -168,8 +168,6 @@ function setWindSpeedUnit() {
 // TEMP UNIT UI TOGGLE
 
 export function tempUnitToggle() {
-  setWindSpeedUnit();
-
   const celsiusToggle = document.querySelector(".celsius-toggle");
   const fahrenheitToggle = document.querySelector(".fahrenheit-toggle");
 
@@ -190,6 +188,8 @@ export function tempUnitToggle() {
 
     temperatureUnit = "C";
   }
+
+  setWindSpeedUnit();
 
   updateCurrentWeatherUI(getLatestWeatherData());
   updateForeCastWeatherUI(getLatestWeatherData());
