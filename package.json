@@ -7,7 +7,7 @@
     "lint": "eslint . --fix --max-warnings=0",
     "format": "prettier . --write",
     "watch": "webpack --watch",
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack",
     "dev": "webpack serve"
   },
   "keywords": [
@@ -27,6 +27,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.16",
     "css-loader": "^6.8.1",
+    "cssnano": "^6.0.1",
     "eslint": "^8.43.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
